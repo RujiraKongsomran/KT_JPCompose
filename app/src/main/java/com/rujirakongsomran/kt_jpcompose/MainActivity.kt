@@ -26,7 +26,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
 
-            MyApp()
+            MyApp {
+                Greeting(name = "Android")
+            }
 //            KT_JPComposeTheme {
 //                // A surface container using the 'background' color from the theme
 //                Surface(color = MaterialTheme.colors.background) {
@@ -39,10 +41,10 @@ class MainActivity : ComponentActivity() {
     }
 
     @Composable
-    fun MyApp() {
+    fun MyApp(content: @Composable () -> Unit) {
         KT_JPComposeTheme {
-            Surface(color = Yellow){
-                Greeting(name = "Android")
+            Surface(color = Yellow) {
+                content()
             }
         }
     }
@@ -94,16 +96,13 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    @Preview
-    @Composable
-    fun PreviewGreeting() {
-        Greeting("Android")
-    }
 
     @Preview
     @Composable
     fun DefaultPreview() {
-        NewsStory()
+        MyApp {
+            Greeting("Android")
+        }
     }
 }
 

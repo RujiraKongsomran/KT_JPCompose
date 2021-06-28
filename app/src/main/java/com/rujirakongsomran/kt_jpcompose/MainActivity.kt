@@ -24,6 +24,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.rujirakongsomran.kt_jpcompose.ui.theme.KT_JPComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -61,6 +62,11 @@ class MainActivity : ComponentActivity() {
     @Composable
     fun BlueText(){
         Text("Hello World", color = Blue)
+    }
+
+    @Composable
+    fun BigText(){
+        Text("Hello World", fontSize = 30.sp)
     }
 
     @Composable
@@ -196,7 +202,8 @@ class MainActivity : ComponentActivity() {
 //            MyScreenContent()
 //            SimpleText()
 //            StringResourceText
-            BlueText()
+//            BlueText()
+            BigText()
         }
     }
 }

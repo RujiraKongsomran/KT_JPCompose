@@ -7,14 +7,14 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Divider
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color.Companion.Black
+import androidx.compose.ui.graphics.Color.Companion.Transparent
 import androidx.compose.ui.graphics.Color.Companion.Yellow
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -44,12 +44,41 @@ class MainActivity : ComponentActivity() {
     }
 
     @Composable
+    fun Counter() {
+        val count = remember {
+            mutableStateOf(0)
+        }
+        Button(onClick = { count.value++ }) {
+            Text("I've been clicked ${count.value} times")
+        }
+    }
+
+    @Composable
+    fun Counter2(count: Int, updateCount: (Int) -> Unit) {
+        Button(onClick = { updateCount(count + 1) }) {
+            Text("I've been clicked $count times")
+        }
+    }
+
+
+    @Composable
     fun MyScreenContent(names: List<String> = listOf("Android", "there")) {
+        val counterState = remember {
+            mutableStateOf(0)
+        }
         Column {
             for (name in names) {
                 Greeting(name = name)
                 Divider(color = Black)
             }
+            Divider(color = Transparent, thickness = 32.dp)
+//            Counter
+            Counter2(
+                count = counterState.value,
+                updateCount = { newCount ->
+                    counterState.value = newCount
+                }
+            )
         }
     }
 

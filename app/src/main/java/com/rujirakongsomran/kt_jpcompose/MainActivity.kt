@@ -31,6 +31,7 @@ class MainActivity : ComponentActivity() {
             MyApp {
 //                Greeting(name = "Android")
                 MyScreenContent()
+//                PlusNumber()
             }
 //            KT_JPComposeTheme {
 //                // A surface container using the 'background' color from the theme
@@ -60,6 +61,13 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    @Composable
+    fun Plus2Number(num1: Int, num2: Int) {
+        var result: Int = num1 + num2
+        Text("$num1 + $num2 = $result")
+
+    }
+
 
     @Composable
     fun MyScreenContent(names: List<String> = listOf("Android", "there")) {
@@ -79,6 +87,18 @@ class MainActivity : ComponentActivity() {
                     counterState.value = newCount
                 }
             )
+        }
+    }
+
+    @Composable
+    fun PlusNumber(numbers: List<Int> = listOf(5, 10)) {
+        Column {
+            for (number in numbers) {
+                Plus(name = number.toString())
+                Divider(color = Black)
+            }
+            Divider(color = Transparent, thickness = 32.dp)
+            Plus2Number(numbers.elementAt(0), numbers.elementAt(1))
         }
     }
 
@@ -133,6 +153,16 @@ class MainActivity : ComponentActivity() {
         Surface(color = Yellow) {
             Text(
                 text = "Hello $name!",
+                modifier = Modifier.padding(24.dp)
+            )
+        }
+    }
+
+    @Composable
+    fun Plus(name: String) {
+        Surface(color = Yellow) {
+            Text(
+                text = name,
                 modifier = Modifier.padding(24.dp)
             )
         }

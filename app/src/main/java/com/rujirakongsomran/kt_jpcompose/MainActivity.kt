@@ -14,6 +14,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color.Companion.Black
+import androidx.compose.ui.graphics.Color.Companion.Blue
 import androidx.compose.ui.graphics.Color.Companion.Transparent
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.graphics.Color.Companion.Yellow
@@ -55,6 +56,11 @@ class MainActivity : ComponentActivity() {
     @Composable
     fun StringResourceText(){
         Text(stringResource(R.string.app_name))
+    }
+
+    @Composable
+    fun BlueText(){
+        Text("Hello World", color = Blue)
     }
 
     @Composable
@@ -189,7 +195,8 @@ class MainActivity : ComponentActivity() {
 //            Greeting("Android")
 //            MyScreenContent()
 //            SimpleText()
-            StringResourceText()
+//            StringResourceText
+            BlueText()
         }
     }
 }

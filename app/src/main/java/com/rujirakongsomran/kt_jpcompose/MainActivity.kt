@@ -1,5 +1,6 @@
 package com.rujirakongsomran.kt_jpcompose
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -12,6 +13,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color.Companion.Yellow
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
@@ -73,7 +75,10 @@ class MainActivity : ComponentActivity() {
 
     @Composable
     fun Greeting(name: String) {
-        Text(text = "Hello $name!")
+        Surface(color = Yellow){
+            Text(text = "Hello $name!",
+            modifier = Modifier.padding(24.dp))
+        }
     }
 
     @Preview

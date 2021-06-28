@@ -25,13 +25,24 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            KT_JPComposeTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(color = MaterialTheme.colors.background) {
-//                    Greeting("Android")
-                    NewsStory()
 
-                }
+            MyApp()
+//            KT_JPComposeTheme {
+//                // A surface container using the 'background' color from the theme
+//                Surface(color = MaterialTheme.colors.background) {
+////                    Greeting("Android")
+////                    NewsStory()
+//
+//                }
+//            }
+        }
+    }
+
+    @Composable
+    fun MyApp() {
+        KT_JPComposeTheme {
+            Surface(color = Yellow){
+                Greeting(name = "Android")
             }
         }
     }
@@ -75,9 +86,11 @@ class MainActivity : ComponentActivity() {
 
     @Composable
     fun Greeting(name: String) {
-        Surface(color = Yellow){
-            Text(text = "Hello $name!",
-            modifier = Modifier.padding(24.dp))
+        Surface(color = Yellow) {
+            Text(
+                text = "Hello $name!",
+                modifier = Modifier.padding(24.dp)
+            )
         }
     }
 

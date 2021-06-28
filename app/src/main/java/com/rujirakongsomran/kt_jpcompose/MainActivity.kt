@@ -7,12 +7,14 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color.Companion.Black
 import androidx.compose.ui.graphics.Color.Companion.Yellow
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -27,7 +29,8 @@ class MainActivity : ComponentActivity() {
         setContent {
 
             MyApp {
-                Greeting(name = "Android")
+//                Greeting(name = "Android")
+                MyScreenContent()
             }
 //            KT_JPComposeTheme {
 //                // A surface container using the 'background' color from the theme
@@ -37,6 +40,15 @@ class MainActivity : ComponentActivity() {
 //
 //                }
 //            }
+        }
+    }
+
+    @Composable
+    fun MyScreenContent() {
+        Column {
+            Greeting("Android")
+            Divider(color = Black)
+            Greeting(name = "there")
         }
     }
 
@@ -101,7 +113,8 @@ class MainActivity : ComponentActivity() {
     @Composable
     fun DefaultPreview() {
         MyApp {
-            Greeting("Android")
+//            Greeting("Android")
+            MyScreenContent()
         }
     }
 }

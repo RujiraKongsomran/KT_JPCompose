@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color.Companion.Black
 import androidx.compose.ui.graphics.Color.Companion.Transparent
+import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.graphics.Color.Companion.Yellow
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -42,6 +43,12 @@ class MainActivity : ComponentActivity() {
 //                }
 //            }
         }
+    }
+
+    // Displaying Text
+    @Composable
+    fun SimpleText() {
+        Text("Hello World")
     }
 
     @Composable
@@ -105,7 +112,7 @@ class MainActivity : ComponentActivity() {
     @Composable
     fun MyApp(content: @Composable () -> Unit) {
         KT_JPComposeTheme {
-            Surface(color = Yellow) {
+            Surface(color = White) {
                 content()
             }
         }
@@ -174,7 +181,8 @@ class MainActivity : ComponentActivity() {
     fun DefaultPreview() {
         MyApp {
 //            Greeting("Android")
-            MyScreenContent()
+//            MyScreenContent()
+            SimpleText()
         }
     }
 }

@@ -21,6 +21,7 @@ import androidx.compose.ui.graphics.Color.Companion.Yellow
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -55,18 +56,23 @@ class MainActivity : ComponentActivity() {
     }
 
     @Composable
-    fun StringResourceText(){
+    fun StringResourceText() {
         Text(stringResource(R.string.app_name))
     }
 
     @Composable
-    fun BlueText(){
+    fun BlueText() {
         Text("Hello World", color = Blue)
     }
 
     @Composable
-    fun BigText(){
+    fun BigText() {
         Text("Hello World", fontSize = 30.sp)
+    }
+
+    @Composable
+    fun ItalicText() {
+        Text("Hello World", fontStyle = FontStyle.Italic)
     }
 
     @Composable
@@ -203,7 +209,8 @@ class MainActivity : ComponentActivity() {
 //            SimpleText()
 //            StringResourceText
 //            BlueText()
-            BigText()
+//            BigText
+            ItalicText()
         }
     }
 }

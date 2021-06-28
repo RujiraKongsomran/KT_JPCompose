@@ -211,12 +211,28 @@ class MainActivity : ComponentActivity() {
     @Preview(showBackground = true)
     @Composable
     fun DifferentFonts() {
+        val firaSansFamily = FontFamily(
+            Font(R.font.firasans_light, FontWeight.Light),
+            Font(R.font.firasans_regular, FontWeight.Normal),
+            Font(R.font.firasans_italic, FontWeight.Normal, FontStyle.Italic),
+            Font(R.font.firasans_medium, FontWeight.Medium),
+            Font(R.font.firasans_bold, FontWeight.Bold)
+        )
         Column {
-            Text("Hello World", fontFamily = FontFamily.Serif)
-            Text("Hello World", fontFamily = FontFamily.SansSerif)
+//            Text("Hello World", fontFamily = FontFamily.Serif)
+//            Text("Hello World", fontFamily = FontFamily.SansSerif)
+            Text("Android Spread", fontFamily = firaSansFamily, fontWeight = FontWeight.Light)
+            Text("Android Spread", fontFamily = firaSansFamily, fontWeight = FontWeight.Normal)
+            Text(
+                "Android Spread",
+                fontFamily = firaSansFamily,
+                fontWeight = FontWeight.Normal,
+                fontStyle = FontStyle.Italic
+            )
+            Text("Android Spread", fontFamily = firaSansFamily, fontWeight = FontWeight.Medium)
+            Text("Android Spread", fontFamily = firaSansFamily, fontWeight = FontWeight.Bold)
         }
     }
-
 
     @Preview
     @Composable

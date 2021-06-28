@@ -19,6 +19,7 @@ import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.graphics.Color.Companion.Yellow
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -49,6 +50,11 @@ class MainActivity : ComponentActivity() {
     @Composable
     fun SimpleText() {
         Text("Hello World")
+    }
+
+    @Composable
+    fun StringResourceText(){
+        Text(stringResource(R.string.app_name))
     }
 
     @Composable
@@ -182,7 +188,8 @@ class MainActivity : ComponentActivity() {
         MyApp {
 //            Greeting("Android")
 //            MyScreenContent()
-            SimpleText()
+//            SimpleText()
+            StringResourceText()
         }
     }
 }

@@ -24,6 +24,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -220,6 +221,15 @@ class MainActivity : ComponentActivity() {
 //            ItalicText()
             BoldText()
         }
+    }
+
+    @Preview(showBackground = true)
+    @Composable
+    fun CenterText() {
+        Text(
+            "Hello World", textAlign = TextAlign.Center,
+            modifier = Modifier.width(150.dp)
+        )
     }
 }
 

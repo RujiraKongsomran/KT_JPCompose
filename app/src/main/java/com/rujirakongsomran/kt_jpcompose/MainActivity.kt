@@ -15,18 +15,22 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color.Companion.Black
 import androidx.compose.ui.graphics.Color.Companion.Blue
+import androidx.compose.ui.graphics.Color.Companion.Red
 import androidx.compose.ui.graphics.Color.Companion.Transparent
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.graphics.Color.Companion.Yellow
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -208,7 +212,6 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    @Preview(showBackground = true)
     @Composable
     fun DifferentFonts() {
         val firaSansFamily = FontFamily(
@@ -234,6 +237,25 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    @Preview(showBackground = true)
+    @Composable
+    fun MultipleStylesInText() {
+        Text(
+            buildAnnotatedString {
+                withStyle(style = SpanStyle(color = Blue)) {
+                    append("H")
+                }
+                append("ello ")
+
+                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold, color = Red)){
+                    append("W")
+                }
+                append("orld")
+            }
+        )
+    }
+
+
     @Preview
     @Composable
     fun DefaultPreview() {
@@ -249,7 +271,6 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    @Preview(showBackground = true)
     @Composable
     fun CenterText() {
         Text(

@@ -7,6 +7,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -44,8 +45,9 @@ class MainActivity : ComponentActivity() {
 
             MyApp {
 //                Greeting(name = "Android")
-                MyScreenContent()
+//                MyScreenContent()
 //                PlusNumber()
+                SelectableText()
             }
 //            KT_JPComposeTheme {
 //                // A surface container using the 'background' color from the theme
@@ -279,10 +281,18 @@ class MainActivity : ComponentActivity() {
         )
     }
 
-    @Preview(showBackground = true)
+    //    @Preview(showBackground = true)
     @Composable
     fun LongText() {
         Text("Biw ".repeat(50), maxLines = 2, overflow = TextOverflow.Ellipsis)
+    }
+
+    @Preview(showBackground = true)
+    @Composable
+    fun SelectableText() {
+        SelectionContainer {
+            Text("This text is selectable")
+        }
     }
 
 
@@ -300,6 +310,7 @@ class MainActivity : ComponentActivity() {
             BoldText()
         }
     }
+
 
     @Composable
     fun CenterText() {

@@ -256,7 +256,7 @@ class MainActivity : ComponentActivity() {
         )
     }
 
-    @Preview(showBackground = true)
+    //    @Preview(showBackground = true)
     @Composable
     fun ParagraphStyle() {
         Text(
@@ -277,6 +277,12 @@ class MainActivity : ComponentActivity() {
                 }
             }
         )
+    }
+
+    @Preview(showBackground = true)
+    @Composable
+    fun LongText() {
+        Text("Biw " .repeat(50), maxLines = 2)
     }
 
 

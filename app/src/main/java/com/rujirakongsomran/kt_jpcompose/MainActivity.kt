@@ -38,6 +38,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.rujirakongsomran.kt_jpcompose.ui.theme.KT_JPComposeTheme
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +50,7 @@ class MainActivity : ComponentActivity() {
 //                Greeting(name = "Android")
 //                MyScreenContent()
 //                PlusNumber()
-                SimpleClickableText()
+                SimpleFilledTextFieldSample()
             }
 //            KT_JPComposeTheme {
 //                // A surface container using the 'background' color from the theme
@@ -295,7 +298,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    @Preview(showBackground = true)
+
     @Composable
     fun PartiallySelectableText() {
         SelectionContainer() {
@@ -346,6 +349,18 @@ class MainActivity : ComponentActivity() {
         Text(
             "Hello World", textAlign = TextAlign.Center,
             modifier = Modifier.width(150.dp)
+        )
+    }
+
+    @Preview(showBackground = true)
+    @Composable
+    fun SimpleFilledTextFieldSample() {
+        var text by remember { mutableStateOf("Hello") }
+
+        TextField(
+            value = text,
+            onValueChange = { text = it },
+            label = { Text("Label") }
         )
     }
 }

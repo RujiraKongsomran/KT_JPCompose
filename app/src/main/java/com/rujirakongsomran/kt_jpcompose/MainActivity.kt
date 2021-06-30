@@ -22,6 +22,7 @@ import androidx.compose.ui.graphics.Color.Companion.Yellow
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.Paragraph
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.Font
@@ -237,7 +238,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    @Preview(showBackground = true)
+    //    @Preview(showBackground = true)
     @Composable
     fun MultipleStylesInText() {
         Text(
@@ -247,7 +248,7 @@ class MainActivity : ComponentActivity() {
                 }
                 append("ello ")
 
-                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold, color = Red)){
+                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold, color = Red)) {
                     append("W")
                 }
                 append("orld")
@@ -255,8 +256,31 @@ class MainActivity : ComponentActivity() {
         )
     }
 
+    @Preview(showBackground = true)
+    @Composable
+    fun ParagraphStyle() {
+        Text(
+            buildAnnotatedString {
+                withStyle(style = androidx.compose.ui.text.ParagraphStyle(lineHeight = 30.sp)) {
+                    withStyle(style = SpanStyle(color = Blue)) {
+                        append("Hello\n")
+                    }
+                    withStyle(
+                        style = SpanStyle(
+                            fontWeight = FontWeight.Bold,
+                            color = Red
+                        )
+                    ) {
+                        append("World\n")
+                    }
+                    append("Compose")
+                }
+            }
+        )
+    }
 
-    @Preview
+
+    //    @Preview
     @Composable
     fun DefaultPreview() {
         MyApp {

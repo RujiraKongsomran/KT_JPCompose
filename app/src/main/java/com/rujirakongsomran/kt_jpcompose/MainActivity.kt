@@ -50,7 +50,7 @@ class MainActivity : ComponentActivity() {
 //                Greeting(name = "Android")
 //                MyScreenContent()
 //                PlusNumber()
-                  SimpleOutlinedTextFieldSample()
+                StyledTextField()
             }
 //            KT_JPComposeTheme {
 //                // A surface container using the 'background' color from the theme
@@ -363,7 +363,6 @@ class MainActivity : ComponentActivity() {
         )
     }
 
-    @Preview(showBackground = true)
     @Composable
     fun SimpleOutlinedTextFieldSample() {
         var text by remember {
@@ -374,6 +373,22 @@ class MainActivity : ComponentActivity() {
             value = text,
             onValueChange = { text = it },
             label = { Text("Label") }
+        )
+    }
+
+    @Preview(showBackground = true)
+    @Composable
+    fun StyledTextField() {
+        var value by remember {
+            mutableStateOf("Hello\nWorld\nInvisible")
+        }
+        TextField(
+            value = value,
+            onValueChange = { value = it },
+            label = { Text("Enter text") },
+            maxLines = 2,
+            textStyle = TextStyle(color = Blue, fontWeight = FontWeight.Bold),
+            modifier = Modifier.padding(20.dp)
         )
     }
 }

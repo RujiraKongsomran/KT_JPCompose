@@ -282,7 +282,7 @@ class MainActivity : ComponentActivity() {
     @Preview(showBackground = true)
     @Composable
     fun LongText() {
-        Text("Biw " .repeat(50), maxLines = 2)
+        Text("Biw ".repeat(50), maxLines = 2, overflow = TextOverflow.Ellipsis)
     }
 
 

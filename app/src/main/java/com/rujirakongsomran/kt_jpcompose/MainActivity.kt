@@ -2,11 +2,13 @@ package com.rujirakongsomran.kt_jpcompose
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.text.selection.DisableSelection
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.*
@@ -24,16 +26,13 @@ import androidx.compose.ui.graphics.Color.Companion.Yellow
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.Paragraph
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.*
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -48,7 +47,7 @@ class MainActivity : ComponentActivity() {
 //                Greeting(name = "Android")
 //                MyScreenContent()
 //                PlusNumber()
-                PartiallySelectableText()
+                SimpleClickableText()
             }
 //            KT_JPComposeTheme {
 //                // A surface container using the 'background' color from the theme
@@ -328,6 +327,17 @@ class MainActivity : ComponentActivity() {
 //            ItalicText()
             BoldText()
         }
+    }
+
+    @Composable
+    fun SimpleClickableText() {
+        ClickableText(
+            text = AnnotatedString("Click Me"),
+            onClick = { offset ->
+                Log.d("ClickableText", "$offset -th character is clicked.")
+
+            }
+        )
     }
 
 

@@ -7,6 +7,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.selection.DisableSelection
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -47,7 +48,7 @@ class MainActivity : ComponentActivity() {
 //                Greeting(name = "Android")
 //                MyScreenContent()
 //                PlusNumber()
-                SelectableText()
+                PartiallySelectableText()
             }
 //            KT_JPComposeTheme {
 //                // A surface container using the 'background' color from the theme
@@ -287,11 +288,29 @@ class MainActivity : ComponentActivity() {
         Text("Biw ".repeat(50), maxLines = 2, overflow = TextOverflow.Ellipsis)
     }
 
-    @Preview(showBackground = true)
+    //    @Preview(showBackground = true)
     @Composable
     fun SelectableText() {
         SelectionContainer {
             Text("This text is selectable")
+        }
+    }
+
+    @Preview(showBackground = true)
+    @Composable
+    fun PartiallySelectableText() {
+        SelectionContainer() {
+            Column {
+                Text("This text is selectable")
+                Text("This one too")
+                Text("This one as well")
+                DisableSelection {
+                    Text("But not this one")
+                    Text("Neither this one")
+                }
+                Text("But again, you can select this one")
+                Text("And this one too")
+            }
         }
     }
 

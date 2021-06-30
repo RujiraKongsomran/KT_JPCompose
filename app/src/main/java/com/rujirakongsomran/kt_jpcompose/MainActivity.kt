@@ -9,6 +9,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.selection.DisableSelection
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.*
@@ -39,7 +40,10 @@ import androidx.compose.ui.unit.sp
 import com.rujirakongsomran.kt_jpcompose.ui.theme.KT_JPComposeTheme
 
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,7 +54,7 @@ class MainActivity : ComponentActivity() {
 //                Greeting(name = "Android")
 //                MyScreenContent()
 //                PlusNumber()
-                StyledTextField()
+                PasswordTextField()
             }
 //            KT_JPComposeTheme {
 //                // A surface container using the 'background' color from the theme
@@ -376,7 +380,7 @@ class MainActivity : ComponentActivity() {
         )
     }
 
-    @Preview(showBackground = true)
+    //    @Preview(showBackground = true)
     @Composable
     fun StyledTextField() {
         var value by remember {
@@ -389,6 +393,24 @@ class MainActivity : ComponentActivity() {
             maxLines = 2,
             textStyle = TextStyle(color = Blue, fontWeight = FontWeight.Bold),
             modifier = Modifier.padding(20.dp)
+        )
+    }
+
+    @Preview(showBackground = true)
+    @Composable
+    fun PasswordTextField() {
+        var password by rememberSaveable {
+            mutableStateOf("")
+        }
+
+        TextField(
+            value = password,
+            onValueChange = {password = it},
+            label = {
+                Text("Enter password")
+            },
+            visualTransformation = PasswordVisualTransformation(),
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
         )
     }
 }

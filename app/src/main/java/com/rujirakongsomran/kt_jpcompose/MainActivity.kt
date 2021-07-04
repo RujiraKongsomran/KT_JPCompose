@@ -7,6 +7,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.text.KeyboardOptions
@@ -42,6 +43,8 @@ import com.rujirakongsomran.kt_jpcompose.ui.theme.KT_JPComposeTheme
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.Color.Companion.Gray
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 
@@ -54,7 +57,7 @@ class MainActivity : ComponentActivity() {
 //                Greeting(name = "Android")
 //                MyScreenContent()
 //                PlusNumber()
-                PasswordTextField()
+                ArtistCard()
             }
 //            KT_JPComposeTheme {
 //                // A surface container using the 'background' color from the theme
@@ -396,7 +399,7 @@ class MainActivity : ComponentActivity() {
         )
     }
 
-    @Preview(showBackground = true)
+
     @Composable
     fun PasswordTextField() {
         var password by rememberSaveable {
@@ -405,13 +408,37 @@ class MainActivity : ComponentActivity() {
 
         TextField(
             value = password,
-            onValueChange = {password = it},
+            onValueChange = { password = it },
             label = {
                 Text("Enter password")
             },
             visualTransformation = PasswordVisualTransformation(),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
         )
+    }
+
+    @Preview(showBackground = true)
+    @Composable
+    fun ArtistCard() {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.padding(5.dp)
+        ) {
+            Image(
+                painter = painterResource(R.drawable.header),
+                contentDescription = null,
+                modifier = Modifier
+                    .height(40.dp)
+                    .width(40.dp)
+                    .clip(shape = CircleShape),
+                contentScale = ContentScale.Crop
+            )
+            Spacer(modifier = Modifier.width(12.dp))
+            Column {
+                Text("Alfred Sisley", fontWeight = FontWeight.Bold)
+                Text("3 minutes ago", fontSize = 11.sp, color = Gray)
+            }
+        }
     }
 }
 
